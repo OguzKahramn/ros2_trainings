@@ -1,0 +1,15 @@
+# X pose of the robot
+float64 x
+# Y pose of the robot
+float64 y
+# orientation of the robot
+float64 orientation  # (rad)
+# Linear velocity of the right wheel
+float64 vel_right 
+# Linear velocity of the left wheel
+float64 vel_left
+# width of the robot
+float64 witdh # distance between wheels
+---
+float64 x_icc
+float64 y_icc
