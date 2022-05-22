@@ -6,14 +6,14 @@ class CalcIccCordClient : public rclcpp::Node
 public:
     CalcIccCordClient() : Node("add_two_ints_client") 
     {
-        threads_.push_back(std::thread(std::bind(&CalcIccCordClient::callAddTwoIntsService, this, 0.0, 0.0, 1.57, 2.0, 2.0,1.0)));
+        threads_.push_back(std::thread(std::bind(&CalcIccCordClient::callcalculateService, this, 0.0, 0.0, 1.57, 2.0, 2.0,1.0)));
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
-        threads_.push_back(std::thread(std::bind(&CalcIccCordClient::callAddTwoIntsService, this, 4.0 ,5.0, 1.57, 2.5, 3.5, 1.0)));
+        threads_.push_back(std::thread(std::bind(&CalcIccCordClient::callcalculateService, this, 4.0 ,5.0, 1.57, 2.5, 3.5, 1.0)));
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
-        threads_.push_back(std::thread(std::bind(&CalcIccCordClient::callAddTwoIntsService, this, -4.0 ,5.0, 1.57, 2.5, 3.5, 1.0)));
+        threads_.push_back(std::thread(std::bind(&CalcIccCordClient::callcalculateService, this, -4.0 ,5.0, 1.57, 2.5, 3.5, 1.0)));
     }
 
-    void callAddTwoIntsService(_Float64 x_, _Float64 y_, _Float64 theta_, _Float64 vel_right_, _Float64 vel_left_, _Float64 distance_)
+    void callcalculateService(_Float64 x_, _Float64 y_, _Float64 theta_, _Float64 vel_right_, _Float64 vel_left_, _Float64 distance_)
     {
         auto client = this->create_client<tutorial_interfaces::srv::CalcIccCordDifDrive>("calcIccCord");
         while (!client->wait_for_service(std::chrono::seconds(1)))
