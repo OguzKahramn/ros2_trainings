@@ -21,6 +21,12 @@ find_package(rclcpp REQUIRED)
 find_package(tutorial_interfaces REQUIRED)
 find_package(std_msgs REQUIRED)
 
+add_executable(range_sensor_pub src/range_sensor_pub.cpp)
+ament_target_dependencies(range_sensor_pub rclcpp tutorial_interfaces)
+
+add_executable(range_sensor_sub src/range_sensor_sub.cpp)
+ament_target_dependencies(range_sensor_sub rclcpp tutorial_interfaces)
+
 add_executable(calculateICCserver src/action_server.cpp)
 ament_target_dependencies(calculateICCserver rclcpp tutorial_interfaces)
 
@@ -29,6 +35,8 @@ ament_target_dependencies(calculateICCclient rclcpp tutorial_interfaces)
 
 
 install(TARGETS
+range_sensor_pub
+range_sensor_sub
 calculateICCserver
 calculateICCclient
 DESTINATION lib/${PROJECT_NAME})
